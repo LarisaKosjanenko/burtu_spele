@@ -1,2 +1,2 @@
 # burtu_spele
-Šeit būs spēles apraksts!
+Šeit būs spēles apraksts!!
