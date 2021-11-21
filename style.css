@@ -1,0 +1,33 @@
+table {
+  margin-top: 10px;
+}
+td {
+  border: 1px solid black;
+  padding: 7px;
+}
+
+body {
+  background: rgb(238, 188, 212);
+  font-size: 20px;
+}
+h1 {
+  font-size: 24px;
+}
+.burti {
+  font-size: 48px;
+  color: blue;
+  font-weight: bold;
+}
+.vards {
+  font-size: 28px;
+}
+.pareizi {
+  background: rgb(182, 236, 157);
+}
+.nepareizi {
+  background: rgb(235, 77, 71);
+}
+.laiks {
+  padding: 5px;
+  background: white;
+}
