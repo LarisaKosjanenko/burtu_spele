@@ -11,26 +11,110 @@
     <h1><a href="index.html">Atgriezties uz sākumlapu</a></h1>
     <p class="vards">Sajaukts vārds ir</p>
 
-    <div class="burti">
-      <span>K</span>
-      <span>V</span>
-      <span>I</span>
-      <span>S</span>
-      <span>T</span>
-      <span>Ē</span>
-    </div>
-    <input type="text" style="padding: 30px; font-size: 24px" />
-    <button style="padding: 30px; font-size: 24px">Atminēt vārdu</button>
+    <!--satures sajaukto vardu-->
+    <div id="burti"></div>
+
+    <input id="ievadlauks" type="text" style="padding: 30px; font-size: 24px" />
+
+    <button onclick="parbaudit()" style="padding: 30px; font-size: 24px">
+      Atminēt vārdu
+    </button>
     <table>
       <tr>
         <td class="pareizi">Pareizi</td>
         <td class="nepareizi">Nepareizi</td>
       </tr>
       <tr>
-        <td>0</td>
-        <td>0</td>
+        <td id="pareizoAtbilzuSkaits"></td>
+        <td id="nePareizoAtbilzuSkaits"></td>
       </tr>
     </table>
-    <p>Laiks: <span class="laiks"> 00:01 </span></p>
+    <p>Laiks: <span id="laiks"></span></p>
+
+    <script>
+      let vardaId;
+      let atbildes = [
+        "OZOLS",
+        "LIEPA",
+        "BĒRZS",
+        "KĻAVA",
+        "EGLE",
+        "PRIEDE",
+        "KASTAŅA",
+        "VĪTOLS",
+        "PĪLĀDZIS",
+        "ĀBELE",
+      ];
+      let sajaukti = [
+        "OOZSL",
+        "ALEPI",
+        "RBSĒZ",
+        "AKVĻA",
+        "GEEL",
+        "RDPIEE",
+        "AKŅTAAS",
+        "ĪLVTSO",
+        "ĀLPDĪSZI",
+        "LBĀEE",
+      ];
+      let vardaBlok = document.getElementById("burti"); //atrodam bloku, kurs satures sajaukto vardu
+      let ievadLauks = document.getElementById("ievadlauks");
+      let laikaLauks = document.getElementById("laiks");
+      let pareizoAtbilzuSkaitsLauks = document.getElementById(
+        "pareizoAtbilzuSkaits"
+      );
+      let nePareizoAtbilzuSkaitsLauks = document.getElementById(
+        "nePareizoAtbilzuSkaits"
+      );
+      let pareizoSkaits = 0;
+      let nePareizoSkaits = 0;
+      pareizoAtbilzuSkaitsLauks.innerHTML = pareizoSkaits;
+      nePareizoAtbilzuSkaitsLauks.innerHTML = pareizoSkaits;
+
+      nejausaisVards();
+      let pateretasSekundes = 0;
+      let pateretasMinutes = 0;
+      laikaLauks.innerHTML = "00:00";
+      setInterval(atjaunotLaiku, 1000);
+      function parbaudit() {
+        let ievaditaisVards = ievadLauks.value.toUpperCase();
+        if (ievaditaisVards == atbildes[vardaId]) {
+          pareizoSkaits = pareizoSkaits + 1;
+          pareizoAtbilzuSkaitsLauks.innerHTML = pareizoSkaits;
+          alert("Pareizi");
+        } else {
+          nePareizoSkaits = nePareizoSkaits + 1;
+          nePareizoAtbilzuSkaitsLauks.innerHTML = nePareizoSkaits;
+          alert("Nepareizi, pareiza atbilde ir: " + atbildes[vardaId]);
+        }
+        nejausaisVards();
+      }
+
+      function atjaunotLaiku() {
+        pateretasSekundes = pateretasSekundes + 1;
+        if (pateretasSekundes == 60) {
+          pateretasSekundes = 0;
+          pateretasMinutes = pateretasMinutes + 1;
+        }
+        let papildusNullePirmsMinutem = pateretasMinutes < 10 ? "0" : "";
+        let papildusNullePirmsSekundem = pateretasSekundes < 10 ? "0" : "";
+        laikaLauks.innerHTML =
+          papildusNullePirmsMinutem +
+          pateretasMinutes +
+          ":" +
+          papildusNullePirmsSekundem +
+          pateretasSekundes;
+      }
+
+      function nejausaisVards() {
+        vardaId = getRandomInt(atbildes.length);
+        vardaBlok.innerHTML = sajaukti[vardaId];
+        //vardaBlok.innerHTML = "KVISTĒ";
+      }
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+    </script>
   </body>
 </html>

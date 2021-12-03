@@ -13,7 +13,7 @@ body {
 h1 {
   font-size: 24px;
 }
-.burti {
+#burti {
   font-size: 48px;
   color: blue;
   font-weight: bold;
@@ -27,7 +27,7 @@ h1 {
 .nepareizi {
   background: rgb(235, 77, 71);
 }
-.laiks {
+#laiks {
   padding: 5px;
   background: white;
 }
