@@ -69,7 +69,7 @@
       let pareizoSkaits = 0;
       let nePareizoSkaits = 0;
       pareizoAtbilzuSkaitsLauks.innerHTML = pareizoSkaits;
-      nePareizoAtbilzuSkaitsLauks.innerHTML = pareizoSkaits;
+      nePareizoAtbilzuSkaitsLauks.innerHTML = nePareizoSkaits;
 
       nejausaisVards();
       let pateretasSekundes = 0;
@@ -96,7 +96,12 @@
           pateretasSekundes = 0;
           pateretasMinutes = pateretasMinutes + 1;
         }
-        let papildusNullePirmsMinutem = pateretasMinutes < 10 ? "0" : "";
+        let papildusNullePirmsMinutem;
+        if (pateretasMinutes < 10) {
+          papildusNullePirmsMinutem = "0";
+        } else {
+          papildusNullePirmsMinutem = "";
+        }
         let papildusNullePirmsSekundem = pateretasSekundes < 10 ? "0" : "";
         laikaLauks.innerHTML =
           papildusNullePirmsMinutem +
