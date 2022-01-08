@@ -11,13 +11,17 @@ body {
   font-size: 20px;
 }
 h1 {
-  font-size: 24px;
+  font-size: 30px;
 }
 h2 {
   font-size: 24px;
-  color: rgb(5, 5, 155);
+  color: rgb(0, 0, 10);
 }
 
+h3 {
+  font-size: 20px;
+  color: rgb(0, 0, 10);
+}
 #burti {
   font-size: 48px;
   color: blue;
@@ -39,4 +43,7 @@ h2 {
 #punkti {
   padding: 5px;
   background: white;
+}
+li {
+  font-size: 28px;
 }
