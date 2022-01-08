@@ -13,6 +13,11 @@ body {
 h1 {
   font-size: 24px;
 }
+h2 {
+  font-size: 24px;
+  color: rgb(5, 5, 155);
+}
+
 #burti {
   font-size: 48px;
   color: blue;
@@ -28,6 +33,10 @@ h1 {
   background: rgb(235, 77, 71);
 }
 #laiks {
+  padding: 5px;
+  background: white;
+}
+#punkti {
   padding: 5px;
   background: white;
 }
