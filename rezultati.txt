@@ -1,0 +1,1 @@
+[{"punkti": "300", "vards": "Larisa"}, {"punkti": "400", "vards": "Larisa"}, {"punkti": "500", "vards": "Larisa"}, {"punkti": "500", "vards": "Vasilisa"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}]
