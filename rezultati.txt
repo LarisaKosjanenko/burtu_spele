@@ -1,1 +1,1 @@
-[{"punkti": "300", "vards": "Larisa"}, {"punkti": "400", "vards": "Larisa"}, {"punkti": "500", "vards": "Larisa"}, {"punkti": "500", "vards": "Vasilisa"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}, {"punkti": "100", "vards": "Test"}]
+[{"punkti": 25, "vards": "Larisa"}, {"punkti": 8, "vards": "Larisa"}, {"punkti": 5, "vards": "Larisa"}, {"punkti": 82, "vards": "Larisa"}, {"punkti": 27, "vards": "Larisa"}]

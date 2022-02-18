@@ -1,5 +1,5 @@
 from flask import Flask, json, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from operator import itemgetter
 
 
@@ -11,6 +11,7 @@ CORS(app)  # enable crossdomain access
 
 
 @app.route('/', methods=['GET', 'POST'])  # what to return at base
+@cross_origin(origin='*')
 def route():
     if (request.method == 'GET'):
         f = open("rezultati.txt", "r")

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tops</title>
+  </head>
+  <body>
+    <h1><a href="index.html">Atgriezties uz sākumlapu</a></h1>
+    <div id="rezultati"></div>
+    <script>
+      let resultsDiv = document.getElementById("rezultati");
+
+      fetch("http://127.0.0.1:8020/").then((response) => {
+        response.json().then((results) => {
+          createResultsTable(results);
+        });
+      });
+
+      function createResultsTable(results) {
+        let resultsTable = "<table><tr><th>Vards</th><th>Punkti</th></tr>";
+        results.forEach((oneResult) => {
+          resultsTable +=
+            "<tr><td>" +
+            oneResult.vards +
+            "</td><td>" +
+            oneResult.punkti +
+            "</td></tr>";
+        });
+        resultsTable += "</table>";
+        resultsDiv.innerHTML = resultsTable;
+      }
+    </script>
+  </body>
+</html>
