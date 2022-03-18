@@ -1,6 +1,32 @@
-from flask import Flask, json, request
+from flask import Flask, json, request, render_template
 from flask_cors import CORS, cross_origin
-from operator import itemgetter
+import sqlite3
+
+def top():
+
+  DB = sqlite3.connect('top.db')
+  
+  SQL = DB.cursor()
+  SQL.execute("SELECT * FROM rezultati ORDER BY punkti DESC")
+  rezultati = SQL.fetchall()
+  print(rezultati)
+  dati = []
+  for rez in rezultati:
+    dati.append({
+      "id":rez[0],
+      "vards":rez[1],
+      "punkti":rez[2]
+    })
+  DB.close()
+  return dati
+
+def pievienot(dati):
+  DB = sqlite3.connect('top.db')
+  SQL = DB.cursor()
+  
+  SQL.execute("INSERT INTO rezultati (vards, punkti) VALUES (:vards, :punkti)", {'vards': dati['vards'], 'punkti': dati['punkti']})
+  DB.commit()
+  DB.close()
 
 
 # print(__name__)
@@ -9,37 +35,39 @@ app = Flask(__name__)
 
 CORS(app)  # enable crossdomain access
 
+@app.route('/')
+def index():
+  return render_template("index.html")
 
-@app.route('/', methods=['GET', 'POST'])  # what to return at base
+@app.route('/spele')
+def spele():
+  return render_template("spele.html")
+
+@app.route('/tops')
+def tops():
+  return render_template("tops.html")
+
+@app.route('/admin')
+def admin():
+  return render_template("admin.html")
+
+@app.route('/api', methods=['GET', 'POST'])  # what to return at base
 @cross_origin(origin='*')
-def route():
+def api():
     if (request.method == 'GET'):
-        f = open("rezultati.txt", "r")
-        dati = f.read()
-        f.close()
-        datiJSON = json.loads(dati)
-        newlist = sorted(datiJSON, key=itemgetter('punkti'), reverse=True)
-        return json.dumps(newlist)
+        return json.dumps(top())
     if (request.method == 'POST'):
         jaunsIeraksts = request.get_json(force=True)
-        f = open("rezultati.txt", "r")
-        dati = f.read()
-        f.close()
-        datiJSON = json.loads(dati)
-        print(datiJSON)
-        print(request.get_json(force=True))
-        datiJSON.append(jaunsIeraksts)
-        f = open("rezultati.txt", "w")
-        f.write(json.dumps(datiJSON))
-        f.close()
-        newlist = sorted(datiJSON, key=itemgetter('punkti'), reverse=True)
-        return json.dumps(newlist)
+        pievienot(jaunsIeraksts)
+        return json.dumps(top())
 
 
-app.run(host='127.0.0.1', port=8020)
+app.run(host='0.0.0.0', port=8020)
 # http serv start
 
 
 # f = open("rezultati.txt","a+")
 # f.write("Pēteris, 55\n")
 # f.close()
+
+

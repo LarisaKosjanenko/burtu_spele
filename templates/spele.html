@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="style.css" rel="stylesheet" />
+    <link href="static/style.css" rel="stylesheet" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sajaukto burtu spēle</title>
   </head>
   <body>
-    <h1><a href="index.html">Atgriezties uz sākumlapu</a></h1>
+    <h1><a href="/">Atgriezties uz sākumlapu</a></h1>
     <p class="vards">Sajaukts vārds ir</p>
 
     <!--satures sajaukto vardu-->
@@ -67,7 +67,7 @@
       nePareizoAtbilzuSkaitsLauks.innerHTML = nePareizoSkaits;
 
       nejausaisVards();
-      fetch("http://127.0.0.1:8020/").then((response) => {
+      fetch("/api").then((response) => {
         response.json().then((results) => {
           createResultsTable(results);
         });
@@ -128,7 +128,7 @@
           vards: vards,
           punkti: punkti,
         };
-        fetch("http://127.0.0.1:8020/", {
+        fetch("/api", {
           method: "POST",
           body: JSON.stringify(dataForPost),
         }).then((response) => {
